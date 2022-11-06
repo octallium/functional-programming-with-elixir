@@ -1,0 +1,84 @@
+# Functional Programming With Elixir
+
+## 01. Introduction & Un-learning
+
+What's **unlearning** has to do with learning ELixir? To explain this let me take you back to your elementary school.
+
+Now Imagine you are sitting in your Maths class and professor tells you `a = 1`. What does it means to you? In would simply mean that `a is equal to 1`, it doesn't say `1 is assigned to variable a`.
+
+So, if `a is equal to 1` then `1 is also equal to a`, isn't it? Let's find it out -
+
+```elixir
+a = 1
+1 = a
+```
+
+There are no errors, surprising isn't it? Well there is no surprise, we are just following what we learnt in our elementary Maths class. Let's try with one more example -
+
+If `name is equal to Octallium` then `Octallium is equal to my name`
+
+```elixir
+name = "Octallium"
+"Octallium" = name
+```
+
+It works just prefect! So what's going on, why don't we see any errors? This is where I want you to unlearn your modern day programming concepts and go back to elementary school. Equal `=` is a match operator in Elixir and behaves just like what you learned in Maths. If `Left Hand Side(LHS) = Right Hand Side(RHS)`, then `RHS = LHS`!
+
+Equal `=` is not a assignment operator as you would think from other programming languages. It is merely matching your `LHS` and `RHS`, if they are equal then everything is fine, otherwise we get an error. This is also called as `Pattern Matching` and this is one of the superpower of Elixir, once you are hooked then there is no going back!
+
+Let's try one more time -
+
+```elixir
+a = 1
+2 = a
+```
+
+This time we get an error! Becuase your LHS is not equal to RHS, on the previous line we say `a and 1 are equal`, so how can `2 and a` be equal?
+
+You can also say that the value of 1 is now bound to the variable a.
+
+Let's try with one more example, square brackets means a [List](https://hexdocs.pm/elixir/List.html) in Elixir, we will talk about it later on in the tutorial, for now just concentrate on `LHS = RHS`
+
+```elixir
+[a, a] = [1, 1]
+```
+
+Let's try with different values and see what happens -
+
+```elixir
+[a, a] = [1, 2]
+```
+
+What happened the second time? `a` is already bound to `1`, so it does not match with `2` and hence we get an error. Again just think of matching your `LHS` and `RHS`. This also bring us to one more important concept of functional programming and that is, all variable are `Immutable`.
+
+## 02. Understanding Immutability
+
+You must be wondering why are variables `Immutable`? Well, first having immutable variables feels closer to actual Maths so it feels `Natural`, second it offers immense `Scalability`, third as a programmer you don't have to worry about `Accidently Mutating` any data, that means the `State` is naturally preserved.
+
+Well, if everything is immutable, then Elixir must be creating copies of everything, how can this be efficient? That's a good questions, the answer is `compilers` are highly optimized for handling immutability, so you don't have to worry too much about creating copies.
+
+Wait, did I just read `compiler`, so is Elixir a compiled language? Yes! ELixir is a compiled language and it runs on the `Erlang Virtual Machine` also knows as `BEAM`. Just like Java or Kotlin complies to bytecode and runs on the `JVM`, similarly we have `BEAM`.
+
+## 03. Actor Model & Processes
+
+What do you mean by an `Actor`, you can think of it as an `Isolated` unit for computation. It has a `Mailbox` where it received messages, `Actor` executes these messages and gives back the data. Each `Actor` has it's own memory stack and is garbage collected seperately.
+
+These `Messages` which an `Actor` receives are executed sequentially in `First In First Out (FIFO)` manner. You can have millions of `Actors` running simultaneously without any problem.
+
+Elixir makes use of this `Actor` model and executes all code in [Processes](https://elixir-lang.org/getting-started/processes.html). These `Processes` are extremely light weight and are easy to spawn and shutdown. `Processes` form the basis of immense scalability, distributed nature and fault-tolerance offered by `Elixir` and in fact the `BEAM`.
+
+## 04. Modules
+
+All code in Elixir stays inside Modules
+
+```elixir
+defmodule Hello do
+  def say(name) do
+    IO.puts("Hello #{name}")
+  end
+end
+```
+
+```elixir
+Hello.say("Octallium")
+```

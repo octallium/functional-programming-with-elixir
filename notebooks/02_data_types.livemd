@@ -1,0 +1,218 @@
+# Data Types
+
+## Atom
+
+```elixir
+:error
+```
+
+```elixir
+{:error, reason} = {:error, "file not found"}
+reason
+```
+
+```elixir
+{:ok, msg} = {:ok, "status 200 ok"}
+msg
+```
+
+## String & Code Points
+
+```elixir
+# Strings are UTF-8 encoded
+name = "Octallium"
+name
+```
+
+```elixir
+is_binary(name)
+```
+
+```elixir
+"Hello " <> name
+```
+
+```elixir
+<<head, read::binary>> = name
+head
+```
+
+```elixir
+head == ?O
+```
+
+```elixir
+# Pattern Matching
+<<"O", rest::binary>> = name
+rest
+```
+
+```elixir
+<<"Oc", rest::binary>> = name
+rest
+```
+
+```elixir
+# Specify Size
+<<head::binary-size(2), rest::binary>> = name
+head
+```
+
+```elixir
+# Char list
+chars = 'Octallium'
+chars
+```
+
+```elixir
+'hello ' ++ chars
+```
+
+```elixir
+is_list(chars)
+```
+
+```elixir
+# Codepoints
+?a
+```
+
+## Processes
+
+```elixir
+my_pid = self()
+my_pid
+```
+
+```elixir
+is_pid(my_pid)
+```
+
+## Lists Are Not Lists - They are Linked List!!!
+
+```elixir
+list = ["a", "b", "c"]
+```
+
+```elixir
+list[0]
+```
+
+```elixir
+Enum.at(list, 1)
+```
+
+```elixir
+[first, second, third] = list
+```
+
+```elixir
+second
+```
+
+```elixir
+[_, _, third] = ["a", "b", "c"]
+third
+```
+
+```elixir
+hd(list)
+```
+
+```elixir
+tl(list)
+```
+
+```elixir
+[h | t] = list
+h
+```
+
+```elixir
+t
+```
+
+## Tuple
+
+```elixir
+{a, b} = {1, 2}
+```
+
+```elixir
+{:reply, msg, state} = {:reply, "Octallium found!", ["Octallium", "Louis", "Chiko"]}
+msg
+```
+
+## Keyword List
+
+```elixir
+data = [a: 1, b: 2, c: 3]
+```
+
+```elixir
+[{:a, 1}] == [a: 1]
+```
+
+```elixir
+data[:c]
+```
+
+## Maps
+
+```elixir
+my_map = %{a: 1, b: 2, c: 3}
+my_map
+```
+
+```elixir
+%{a: first, b: second, c: third} = %{a: 1, b: 2, c: 3}
+first
+```
+
+```elixir
+%{b: second} = my_map
+second
+```
+
+```elixir
+my_map.a
+```
+
+```elixir
+map2 = %{"a" => 1, "b" => 2, "c" => 3}
+```
+
+```elixir
+%{"c" => c} = map2
+c
+```
+
+```elixir
+map2 = %{map2 | "c" => 4}
+```
+
+```elixir
+my_map = %{my_map | a: 5}
+```
+
+## Struct
+
+```elixir
+defmodule User do
+  defstruct username: "", age: nil, email: ""
+end
+```
+
+```elixir
+user1 = %User{username: "Octallium", age: 14, email: "octobot@sample.com"}
+```
+
+```elixir
+%{username: username} = user1
+username
+```
+
+```elixir
+user1 = %{user1 | age: 21}
+user1
+```

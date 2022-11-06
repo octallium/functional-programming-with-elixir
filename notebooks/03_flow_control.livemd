@@ -1,0 +1,69 @@
+# Flow Control
+
+## Case
+
+```elixir
+list = [1, 2, 3]
+```
+
+```elixir
+case Enum.at(list, 2) do
+  1 -> "This won't print"
+  3 -> "3 is a match!"
+  _ -> "Catch all"
+end
+```
+
+```elixir
+defmodule Post do
+  defstruct(
+    id: nil,
+    title: "",
+    description: "",
+    author: ""
+  )
+end
+```
+
+```elixir
+post1 = %Post{id: 1, title: "Title No 1", author: "Julius Caeser"}
+```
+
+```elixir
+case post1 do
+  %{author: "Octallium"} -> "Got a post from Octallium"
+  %{author: "Anil Kulkarni"} -> "Got a post from Anil Kulkarni"
+  %{author: author} -> "Got a post from #{author}"
+end
+```
+
+```elixir
+post1 = %{post1 | author: "Anil Kulkarni"}
+```
+
+## Cond
+
+```elixir
+cond do
+  post1.author == "Octallium" -> "Editing a post from Octallium"
+  post1.author == "Anil Kulkarni" -> "Editing a post from Anil Kulkarni"
+  true -> "This is a catch all"
+end
+```
+
+```elixir
+cond do
+  hd(list) == 1 -> "Got a 1"
+  true -> "Head is #{inspect(hd(list))}"
+end
+```
+
+## If/Else
+
+```elixir
+if true do
+  "This will work"
+else
+  "Else this will work"
+end
+```
