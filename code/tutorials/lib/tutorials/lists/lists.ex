@@ -1,6 +1,5 @@
 defmodule Tutorials.Lists do
-  @doc """
-  Returns the sum of numbers in a list.
+  @moduledoc """
 
   Function Summary:
 
@@ -13,12 +12,15 @@ defmodule Tutorials.Lists do
 
   # -------------------------- Sum ------------------------------
 
+  @doc """
+  Returns the sum of numbers in a list.
+  """
   @spec sum(list(number())) :: number()
   def sum(nums), do: sum_tail_rec(nums)
 
-  @spec sum_head_rec(list(number())) :: number()
-  def sum_head_rec([]), do: 0
-  def sum_head_rec([h | t]), do: h + sum(t)
+  @spec sum_simple(list(number())) :: number()
+  def sum_simple([]), do: 0
+  def sum_simple([h | t]), do: h + sum(t)
 
   @spec sum_tail_rec(list(number()), non_neg_integer()) :: number()
   def sum_tail_rec(nums, acc \\ 0)
@@ -42,12 +44,12 @@ defmodule Tutorials.Lists do
   # -------------------------- Concat ------------------------------
 
   @spec concat([any], [any]) :: [any]
-  def concat(dst, src), do: concat_func(dst |> reverse(), src)
+  def concat(src, dst), do: concat_func(src |> reverse(), dst)
 
   @spec concat_func([any], [any]) :: [any]
-  def concat_func(dst, src)
-  def concat_func(dst, []), do: dst |> reverse()
-  def concat_func(dst, [h | t]), do: concat_func([h | dst], t)
+  def concat_func(src, dst)
+  def concat_func([], dst), do: dst
+  def concat_func([h | t], dst), do: concat_func(t, [h | dst])
 
   # -------------------------- FlatMap ------------------------------
 

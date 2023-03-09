@@ -54,7 +54,7 @@ end
 ```elixir
 cond do
   hd(list) == 1 -> "Got a 1"
-  true -> "Head is #{inspect(hd(list))}"
+  true -> "Head is #{hd(list)}"
 end
 ```
 

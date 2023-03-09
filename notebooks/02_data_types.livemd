@@ -29,11 +29,16 @@ is_binary(name)
 ```
 
 ```elixir
-"Hello " <> name
+msg = "Hello " <> name
 ```
 
 ```elixir
-<<head, read::binary>> = name
+"Hello " <> name = msg
+name
+```
+
+```elixir
+<<head, rest::binary>> = name
 head
 ```
 
