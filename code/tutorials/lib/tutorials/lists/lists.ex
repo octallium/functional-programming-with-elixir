@@ -22,7 +22,7 @@ defmodule Tutorials.Lists do
   def sum_simple([]), do: 0
   def sum_simple([h | t]), do: h + sum(t)
 
-  @spec sum_tail_rec(list(number()), non_neg_integer()) :: number()
+  @spec sum_tail_rec(list(number()), integer()) :: number()
   def sum_tail_rec(nums, acc \\ 0)
   def sum_tail_rec([], acc), do: acc
   def sum_tail_rec([h | t], acc), do: sum_tail_rec(t, acc + h)
@@ -46,10 +46,8 @@ defmodule Tutorials.Lists do
   @spec concat([any], [any]) :: [any]
   def concat(src, dst), do: concat_func(src |> reverse(), dst)
 
-  @spec concat_func([any], [any]) :: [any]
-  def concat_func(src, dst)
-  def concat_func([], dst), do: dst
-  def concat_func([h | t], dst), do: concat_func(t, [h | dst])
+  defp concat_func([], dst), do: dst
+  defp concat_func([h | t], dst), do: concat_func(t, [h | dst])
 
   # -------------------------- FlatMap ------------------------------
 

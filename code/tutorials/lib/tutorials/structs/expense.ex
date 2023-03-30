@@ -1,5 +1,5 @@
-defmodule Tutorials.Structs.ExpenseManager do
-  alias Tutorials.Structs.ExpenseManager
+defmodule Tutorials.Structs.Expense do
+  alias Tutorials.Structs.Expense
 
   defstruct(
     title: "",
@@ -8,7 +8,7 @@ defmodule Tutorials.Structs.ExpenseManager do
     store: ""
   )
 
-  @type t :: %ExpenseManager{
+  @type t :: %Expense{
           title: String.t(),
           date: Date.t() | nil,
           amount: number(),
@@ -20,10 +20,10 @@ defmodule Tutorials.Structs.ExpenseManager do
   @spec sample :: [t()]
   def sample do
     [
-      %ExpenseManager{title: "Grocery", date: ~D[2022-09-12], amount: 18.99, store: "Metro"},
-      %ExpenseManager{title: "Mobile", date: ~D[2022-10-18], amount: 55.65, store: "Bell"},
-      %ExpenseManager{title: "Jacket", date: ~D[2022-07-06], amount: 150.99, store: "Marks"},
-      %ExpenseManager{title: "Air Jordans", date: ~D[2022-10-30], amount: 799.99, store: "Nike"}
+      %Expense{title: "Grocery", date: ~D[2022-09-12], amount: 18.99, store: "Metro"},
+      %Expense{title: "Mobile", date: ~D[2022-10-18], amount: 55.65, store: "Bell"},
+      %Expense{title: "Jacket", date: ~D[2022-07-06], amount: 150.99, store: "Marks"},
+      %Expense{title: "Air Jordans", date: ~D[2022-10-30], amount: 799.99, store: "Nike"}
     ]
   end
 
@@ -42,7 +42,7 @@ defmodule Tutorials.Structs.ExpenseManager do
   end
 
   @spec add_expense(t) :: [t()]
-  def add_expense(%ExpenseManager{} = expense) do
+  def add_expense(%Expense{} = expense) do
     [expense | sample()]
   end
 

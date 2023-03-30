@@ -38,7 +38,7 @@ defmodule Stats.CentralTendency.Mean do
 
   defp calc_population_mean({true, nums}) do
     nums
-    |> sigma()
+    |> sigma() # Enum.Sum
     |> mean(Enum.count(nums))
   end
 
