@@ -8,9 +8,6 @@ defmodule Stats do
   @spec sample_mean([number]) :: number | {:error, String.t()}
   defdelegate sample_mean(num_list), to: Mean
 
-  @spec weighted_mean([{number, number}]) :: number() | {:error, String.t()}
-  defdelegate weighted_mean(num_list), to: Mean
-
   @spec median([number]) :: number | {:error, String.t()}
   defdelegate median(num_list), to: Median
 

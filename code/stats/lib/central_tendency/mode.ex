@@ -32,8 +32,7 @@ defmodule Stats.CentralTendency.Mode do
 
   defp mode_func(max, ranked_map) do
     ranked_map
-    |> Enum.filter(fn {_, count} -> count == max end)
-    |> Enum.reduce([], fn {el, _}, acc -> [el | acc] end)
-    |> Enum.reverse()
+    |> Map.filter(fn {_key, value} -> value == max end)
+    |> Map.keys()
   end
 end
