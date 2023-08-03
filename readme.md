@@ -1,4 +1,3 @@
-![Functional Elixir](functional_elixir_octallium.png)
 
 # Functional Programming With Elixir
 
